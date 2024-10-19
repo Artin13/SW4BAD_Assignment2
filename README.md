@@ -6,7 +6,7 @@ This is an ASP.NET Core project using Entity Framework Core and SQL Server. The 
 
 Before you can run the project, ensure you have the following installed:
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio)
 

@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SW4BADAssignment2.Models
 {
-    public class Cyclist
+    public class Customer
     {
         [Key]
-        public int CyclistId { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -15,13 +15,10 @@ namespace SW4BADAssignment2.Models
         [Phone]
         public string PhoneNumber { get; set; } = string.Empty;
 
-        public string BikeType { get; set; } = string.Empty;
-
-        [Range(0, double.MaxValue)]
-        public decimal HourlyRate { get; set; }
+        [Required]
+        public string Address { get; set; } = string.Empty;
 
         // Navigation properties
         public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
-        public virtual ICollection<Trip> Trips { get; set; } = new HashSet<Trip>();
     }
 }
