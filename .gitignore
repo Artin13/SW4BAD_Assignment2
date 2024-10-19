@@ -1,0 +1,27 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configuration files
+appsettings.Development.json
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# Rider project files
+.idea/
+
+# macOS
+.DS_Store
+
+# Entity Framework migration history
+Migrations/
