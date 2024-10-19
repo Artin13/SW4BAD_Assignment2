@@ -16,6 +16,7 @@ namespace SW4BADAssignment2.Data
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Kitchen> Kitchens { get; set; }
+        public DbSet<Leg> Legs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -50,6 +51,13 @@ namespace SW4BADAssignment2.Data
                 .HasOne(t => t.Cyclist)
                 .WithMany(c => c.Trips)
                 .HasForeignKey(t => t.CyclistId);
+
+                // Configuration for Leg to Trip relationship
+            modelBuilder.Entity<Leg>()
+                .HasOne(l => l.Trip)
+                .WithMany(t => t.Legs)
+                .HasForeignKey(l => l.TripId)
+                .OnDelete(DeleteBehavior.NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
 
             // Optionally you could add configuration for Dish to Cook relationship if needed
             modelBuilder.Entity<Dish>()

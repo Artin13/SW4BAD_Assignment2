@@ -17,6 +17,8 @@ builder.Services.AddScoped<CookService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<CyclistService>();
 builder.Services.AddScoped<DishService>();
+builder.Services.AddScoped<KitchenService>();
+builder.Services.AddScoped<LegService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<TripService>();
 

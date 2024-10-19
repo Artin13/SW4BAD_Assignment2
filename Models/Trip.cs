@@ -13,5 +13,8 @@ namespace SW4BADAssignment2.Models
         public virtual required Cyclist Cyclist { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+        // Relationship with Legs
+        public virtual ICollection<Leg> Legs { get; set; } = new List<Leg>();
     }
 }
