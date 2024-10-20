@@ -64,3 +64,14 @@ Before you can run the project, ensure you have the following installed:
     Connect to your SQL Server instance.
     Locate the Assignment2DB database.
     Run queries to inspect data or manually modify tables.
+
+   
+ ## Migrations
+   First add the change for the migrations and generate the migration:
+    ```bash
+   dotnet ef migrations add <change>
+   ```
+   Apply the migration to the database:
+   ```bash
+   dotnet ef database update
+   ```
