@@ -31,8 +31,8 @@ public static class DbInitializer
         // Seed Cooks
         var cooks = new Cook[]
         {
-            new() { Name = "Noah", PhoneNumber = "+45 71555080", SSN = "010100-4201", Kitchen = kitchens[0] },
-            new() { Name = "Helle", PhoneNumber = "+45 71991234", SSN = "020200-1234", Kitchen = kitchens[1] }
+            new() { Name = "Noah", PhoneNumber = "+45 71555080", Kitchen = kitchens[0] },
+            new() { Name = "Helle", PhoneNumber = "+45 71991234", Kitchen = kitchens[1] }
         };
         foreach (var cook in cooks)
         {
