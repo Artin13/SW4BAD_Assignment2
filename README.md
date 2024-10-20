@@ -69,7 +69,7 @@ Before you can run the project, ensure you have the following installed:
  ## Migrations
    First add the change for the migrations and generate the migration:
    ```bash
-   dotnet ef migrations add <change>
+   dotnet ef migrations add <Name of migration>
    ```
    Apply the migration to the database:
    ```bash
