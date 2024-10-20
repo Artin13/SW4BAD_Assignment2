@@ -16,7 +16,7 @@ namespace SW4BADAssignment2.Models
         public string Type { get; set; } = string.Empty;
 
         [Required]
-        public DateTime Time { get; set; }
+        public DateTime DateTime { get; set; } // Change from Time to DateTime
 
         // Navigation property to Trip
         public int TripId { get; set; }
