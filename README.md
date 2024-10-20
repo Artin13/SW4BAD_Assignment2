@@ -36,6 +36,11 @@ Before you can run the project, ensure you have the following installed:
     dotnet tool install --global dotnet-ef
     ```
 4. **Apply Migrations to the Database**
+
+    Create your initial migration
+    ```bash
+    dotnet ef migrations add <MigrationName>
+    ```
     Run the migrations to set up the database schema:
     ```bash
     dotnet ef database update
@@ -60,7 +65,3 @@ Before you can run the project, ensure you have the following installed:
 7. **Use Azure Data Studio to View the Database**
 
     You can view and query the database using Azure Data Studio:
-
-    Connect to your SQL Server instance.
-    Locate the Assignment2DB database.
-    Run queries to inspect data or manually modify tables.
