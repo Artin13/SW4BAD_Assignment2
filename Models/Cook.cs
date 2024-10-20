@@ -16,8 +16,11 @@ namespace SW4BADAssignment2.Models
         [Phone]
         public string PhoneNumber { get; set; } = string.Empty;
 
-        [RegularExpression(@"\d{9}")]
-        public string SSN { get; set; } = string.Empty;  // Optional based on requirements, assuming format
+        public bool FoodSafetyCertified { get; set; } = false;
+
+        // Removed for part d
+        //[RegularExpression(@"\d{9}")]
+        //public string SSN { get; set; } = string.Empty;  // Optional based on requirements, assuming format
 
         // Navigation properties
         public virtual ICollection<Dish> Dishes { get; set; } = new HashSet<Dish>();

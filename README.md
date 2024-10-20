@@ -39,7 +39,7 @@ Before you can run the project, ensure you have the following installed:
 
     Create your initial migration
     ```bash
-    dotnet ef migrations add <MigrationName>
+    dotnet ef migrations add <migration name>
     ```
     Run the migrations to set up the database schema:
     ```bash
@@ -65,3 +65,4 @@ Before you can run the project, ensure you have the following installed:
 7. **Use Azure Data Studio to View the Database**
 
     You can view and query the database using Azure Data Studio:
+
