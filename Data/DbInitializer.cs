@@ -31,8 +31,8 @@ public static class DbInitializer
         // Seed Cooks
         var cooks = new Cook[]
         {
-            new() { Name = "Noah", PhoneNumber = "+45 71555080", Kitchen = kitchens[0] },
-            new() { Name = "Helle", PhoneNumber = "+45 71991234", Kitchen = kitchens[1] }
+            new() { Name = "Noah", PhoneNumber = "+45 71555080"},
+            new() { Name = "Helle", PhoneNumber = "+45 71991234"}
         };
         foreach (var cook in cooks)
         {
@@ -43,9 +43,9 @@ public static class DbInitializer
         // Seed Dishes
         var dishes = new Dish[]
         {
-            new() { Name = "Pasta", Price = 30, Quantity = 3, Cook = cooks[0] },
-            new() { Name = "Romkugle", Price = 3, Quantity = 10, Cook = cooks[0] },
-            new() { Name = "Lemonade", Price = 5, Quantity = 2, Cook = cooks[1] }
+            new() { Name = "Pasta", Price = 30, Quantity = 3},
+            new() { Name = "Romkugle", Price = 3, Quantity = 10},
+            new() { Name = "Lemonade", Price = 5, Quantity = 2}
         };
         foreach (var dish in dishes)
         {
@@ -76,25 +76,50 @@ public static class DbInitializer
         }
         context.SaveChanges();
 
+        // Seed Orders with Trips
+        var orders = new Order[]
+        {
+            new() { CookRating = 5, CyclistRating = 4, Customer = customers[0] }
+        };
+        foreach (var order in orders)
+        {
+            context.Orders.Add(order);
+        }
+        context.SaveChanges();
+        
         // Seed Trips
         var trips = new Trip[]
         {
-            new() { Cyclist = cyclists[0] } // Add appropriate properties if there are more
+            new() { Cyclist = cyclists[0], Order = orders[0]} // Add appropriate properties if there are more
         };
         foreach (var trip in trips)
         {
             context.Trips.Add(trip);
         }
         context.SaveChanges();
-
-        // Seed Orders with Trips
-        var orders = new Order[]
+        
+        // Seed Cook Dish Kitchen
+        var cookDishKitchens = new CookDishKitchen[]
         {
-            new() { Quantity = 2, CookRating = 5, CyclistRating = 4, Customer = customers[0], Cyclist = cyclists[0], Trip = trips[0] }
+            new() { Cook = cooks[0], Dish = dishes[0], Kitchen = kitchens[0] },
+            new() { Cook = cooks[0], Dish = dishes[1], Kitchen = kitchens[0] },
+            new() { Cook = cooks[1], Dish = dishes[2], Kitchen = kitchens[1] }
         };
-        foreach (var order in orders)
+        foreach (var cookDishKitchen in cookDishKitchens)
         {
-            context.Orders.Add(order);
+            context.CookDishKitchens.Add(cookDishKitchen);
+        }
+        context.SaveChanges();
+        
+        // Seed Dish Order
+        var dishOrders = new DishOrder[]
+        {
+            new() { Quantity = 1, Dish = dishes[0], Order = orders[0] },
+            new() { Quantity = 1, Dish = dishes[1], Order = orders[0] }
+        };
+        foreach (var dishOrder in dishOrders)
+        {
+            context.DishOrders.Add(dishOrder);
         }
         context.SaveChanges();
     }

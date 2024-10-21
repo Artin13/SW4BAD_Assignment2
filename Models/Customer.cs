@@ -19,6 +19,6 @@ namespace SW4BADAssignment2.Models
         public string Address { get; set; } = string.Empty;
 
         // Navigation properties
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -24,4 +24,4 @@ appsettings.Development.json
 .DS_Store
 
 # Entity Framework migration history
-Migrations/
+# Migrations/ #Commented out because we want to keep the migrations

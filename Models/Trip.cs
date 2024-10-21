@@ -12,9 +12,10 @@ namespace SW4BADAssignment2.Models
         public int CyclistId { get; set; }
         public virtual required Cyclist Cyclist { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
+        
+        public int OrderId { get; set; }
         // Relationship with Legs
+        public Order Order { get; set; }
         public virtual ICollection<Leg> Legs { get; set; } = new List<Leg>();
     }
 }

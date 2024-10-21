@@ -17,34 +17,52 @@ namespace SW4BADAssignment2.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Kitchen> Kitchens { get; set; }
         public DbSet<Leg> Legs { get; set; }
+        public DbSet<CookDishKitchen> CookDishKitchens { get; set; }
+        public DbSet<DishOrder> DishOrders { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuration for Cook to Kitchen relationship
-            modelBuilder.Entity<Cook>()
-                .HasOne(k => k.Kitchen)
-                .WithMany(c => c.Cooks)
-                .HasForeignKey(k => k.KitchenId);
+            // Configuration for Cook Dish Kitchen
+            modelBuilder.Entity<CookDishKitchen>()
+                .HasKey(cdk => new { cdk.CookId, cdk.DishId, cdk.KitchenId });
 
-            // Configuration for Order relationships
+            modelBuilder.Entity<CookDishKitchen>()
+                .HasOne(cdk => cdk.Cook)
+                .WithMany(c => c.CookDishKitchen)
+                .HasForeignKey(cdk => cdk.CookId);
+
+            modelBuilder.Entity<CookDishKitchen>()
+                .HasOne(cdk => cdk.Dish)
+                .WithMany(d => d.CookDishKitchen)
+                .HasForeignKey(cdk => cdk.DishId);
+
+            modelBuilder.Entity<CookDishKitchen>()
+                .HasOne(cdk => cdk.Kitchen)
+                .WithMany(k => k.CookDishKitchen)
+                .HasForeignKey(cdk => cdk.KitchenId);
+
+            // Configuration for Dish Order
+            modelBuilder.Entity<DishOrder>()
+                .HasKey(d => new { d.DishId, d.OrderId });
+
+            modelBuilder.Entity<DishOrder>()
+                .HasOne(d => d.Dish)
+                .WithMany(d => d.DishOrder)
+                .HasForeignKey(d => d.DishId);
+
+            modelBuilder.Entity<DishOrder>()
+                .HasOne(d => d.Order)
+                .WithMany(o => o.DishOrder)
+                .HasForeignKey(o => o.OrderId);
+
+            // Order relationships
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
                 .HasForeignKey(o => o.CustomerId)
-                .OnDelete(DeleteBehavior.NoAction);  // For simplicity we just set it so the relationships dont need cascading deletes
-
-            modelBuilder.Entity<Order>()
-                .HasOne(o => o.Cyclist)
-                .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.CyclistId)
-                .OnDelete(DeleteBehavior.NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
-
-            modelBuilder.Entity<Order>()
-                .HasOne(o => o.Trip)
-                .WithMany(t => t.Orders)
-                .HasForeignKey(o => o.TripId)
-                .OnDelete(DeleteBehavior.NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
+                .OnDelete(DeleteBehavior
+                    .NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
 
             // Configuration for Trip to Cyclist relationship
             modelBuilder.Entity<Trip>()
@@ -52,22 +70,17 @@ namespace SW4BADAssignment2.Data
                 .WithMany(c => c.Trips)
                 .HasForeignKey(t => t.CyclistId);
 
-                // Configuration for Leg to Trip relationship
+            // Configuration for Leg to Trip relationship
             modelBuilder.Entity<Leg>()
                 .HasOne(l => l.Trip)
                 .WithMany(t => t.Legs)
                 .HasForeignKey(l => l.TripId)
-                .OnDelete(DeleteBehavior.NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
-
-            // Optionally you could add configuration for Dish to Cook relationship if needed
-            modelBuilder.Entity<Dish>()
-                .HasOne(d => d.Cook)
-                .WithMany(c => c.Dishes)
-                .HasForeignKey(d => d.CookId);
+                .OnDelete(DeleteBehavior
+                    .NoAction); // For simplicity we just set it so the relationships dont need cascading deletes
 
             modelBuilder.Entity<Cyclist>()
                 .Property(c => c.HourlyRate)
-                .HasColumnType("decimal(18,2)");  // Specifies the precision (18) and scale (2)
+                .HasColumnType("decimal(18,2)"); // Specifies the precision (18) and scale (2)
         }
     }
 }

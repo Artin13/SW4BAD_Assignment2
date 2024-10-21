@@ -23,8 +23,6 @@ namespace SW4BADAssignment2.Models
         //public string SSN { get; set; } = string.Empty;  // Optional based on requirements, assuming format
 
         // Navigation properties
-        public virtual ICollection<Dish> Dishes { get; set; } = new HashSet<Dish>();
-        public int KitchenId { get; set; }
-        public virtual required Kitchen Kitchen { get; set; }
+        public virtual ICollection<CookDishKitchen> CookDishKitchen { get; set; }
     }
 }
