@@ -35,7 +35,7 @@ public class LegService
         if (existingLeg != null)
         {
             existingLeg.Date = leg.Date;
-            existingLeg.DateTime = leg.DateTime;
+            existingLeg.Time = leg.Time;
             existingLeg.Type = leg.Type;
             existingLeg.TripId = leg.TripId;
             _context.SaveChanges();

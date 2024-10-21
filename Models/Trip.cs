@@ -15,7 +15,7 @@ namespace SW4BADAssignment2.Models
         
         public int OrderId { get; set; }
         // Relationship with Legs
-        public Order Order { get; set; }
+        public Order? Order { get; set; }
         public virtual ICollection<Leg> Legs { get; set; } = new List<Leg>();
     }
 }

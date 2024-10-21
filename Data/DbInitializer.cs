@@ -19,8 +19,8 @@ public static class DbInitializer
         // Seed Kitchens
         var kitchens = new Kitchen[]
         {
-            new() { Name = "Noah's Kitchen", Address = "Finlandsgade 17, 8200 Aarhus N" },
-            new() { Name = "Helle's Kitchen", Address = "Ny Munkegade 5, 8200 Aarhus N" }
+            new() { Name = "Noah's Kitchen", Address = "Finlandsgade 17, 8200 Aarhus N"},
+            new() { Name = "Helle's Kitchen", Address = "Ny Munkegade 5, 8200 Aarhus N"}
         };
         foreach (var kitchen in kitchens)
         {
@@ -31,8 +31,8 @@ public static class DbInitializer
         // Seed Cooks
         var cooks = new Cook[]
         {
-            new() { Name = "Noah", PhoneNumber = "+45 71555080"},
-            new() { Name = "Helle", PhoneNumber = "+45 71991234"}
+            new() { Name = "Noah", PhoneNumber = "+45 71555080", SSN = "123456789"},
+            new() { Name = "Helle", PhoneNumber = "+45 71991234", SSN = "987654321"}
         };
         foreach (var cook in cooks)
         {

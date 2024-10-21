@@ -13,8 +13,10 @@ namespace SW4BADAssignment2.Models
         public string Name { get; set; } = string.Empty;
 
         [Phone]
+        [StringLength(50)]
         public string PhoneNumber { get; set; } = string.Empty;
 
+        [StringLength(100)]
         public string BikeType { get; set; } = string.Empty;
 
         [Range(0, double.MaxValue)]

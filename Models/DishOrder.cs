@@ -8,7 +8,7 @@ public class DishOrder
         
     public int OrderId { get; set; }
         
-    public Dish Dish { get; set; }
+    public Dish? Dish { get; set; }
         
-    public Order Order { get; set; }
+    public Order? Order { get; set; }
 }

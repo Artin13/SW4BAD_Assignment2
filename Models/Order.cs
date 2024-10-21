@@ -20,7 +20,7 @@ namespace SW4BADAssignment2.Models
 
         // Navigation properties
         public virtual required Customer Customer { get; set; }
-        public Trip Trip { get; set; }
-        public virtual ICollection<DishOrder> DishOrder { get; set; }
+        public Trip? Trip { get; set; }
+        public virtual ICollection<DishOrder>? DishOrder { get; set; }
     }
 }

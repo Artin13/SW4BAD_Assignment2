@@ -25,3 +25,5 @@ appsettings.Development.json
 
 # Entity Framework migration history
 # Migrations/ #Commented out because we want to keep the migrations
+
+appsettings.json
