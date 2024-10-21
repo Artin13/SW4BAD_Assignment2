@@ -21,6 +21,7 @@ builder.Services.AddScoped<KitchenService>();
 builder.Services.AddScoped<LegService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<TripService>();
+builder.Services.AddScoped<CookDishKitchenService>();
 
 var app = builder.Build();
 
