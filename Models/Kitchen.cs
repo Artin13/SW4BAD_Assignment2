@@ -13,9 +13,10 @@ namespace SW4BADAssignment2.Models
         public string Name { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(100)]
         public string Address { get; set; } = string.Empty;
 
-        // Relationships
-        public virtual ICollection<Cook> Cooks { get; set; } = new HashSet<Cook>();
+        // Navigation properties
+        public virtual ICollection<CookDishKitchen>? CookDishKitchen { get; set; }
     }
 }

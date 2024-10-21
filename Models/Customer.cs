@@ -13,12 +13,21 @@ namespace SW4BADAssignment2.Models
         public string Name { get; set; } = string.Empty;
 
         [Phone]
+        [StringLength(50)]
         public string PhoneNumber { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(100)]
         public string Address { get; set; } = string.Empty;
+        
+        [Required]
+        [StringLength(100)]
+        public string PaymentOption { get; set; } = string.Empty;
+        
+        [StringLength(16)]
+        public string CardInfo { get; set; } = string.Empty;
 
         // Navigation properties
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public virtual ICollection<Order>? Orders { get; set; }
     }
 }

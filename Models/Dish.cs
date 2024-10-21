@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using SW4BADAssignment2.Validators;
 
 namespace SW4BADAssignment2.Models
 {
@@ -12,8 +13,8 @@ namespace SW4BADAssignment2.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
-
-        [Range(0, int.MaxValue)]
+        
+        [DishPriceValidator]
         public int Price { get; set; }
 
         public int Quantity { get; set; }
@@ -21,11 +22,8 @@ namespace SW4BADAssignment2.Models
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
 
-        // Foreign key for Cook
-        public int CookId { get; set; }
-        public virtual required Cook Cook { get; set; }
-
         // Navigation properties
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public virtual ICollection<CookDishKitchen> CookDishKitchen { get; set; }
+        public virtual ICollection<DishOrder> DishOrder { get; set; }
     }
 }

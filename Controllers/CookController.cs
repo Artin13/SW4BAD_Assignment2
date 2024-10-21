@@ -33,8 +33,14 @@ namespace SW4BADAssignment2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Cook>> Create(Cook cook)
+        public async Task<ActionResult<Cook>> Create(string name, string phoneNumber, string ssn)
         {
+            var cook = new Cook
+            {
+                Name = name,
+                PhoneNumber = phoneNumber,
+                SSN = ssn
+            };
             await _cookService.AddAsync(cook);
             return CreatedAtAction(nameof(Get), new { id = cook.CookId }, cook);
         }
