@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using SW4BADAssignment2.Validators;
 
 namespace SW4BADAssignment2.Models
 {
@@ -12,8 +13,8 @@ namespace SW4BADAssignment2.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; } = string.Empty;
-
-        [Range(0, int.MaxValue)]
+        
+        [DishPriceValidator]
         public int Price { get; set; }
 
         public int Quantity { get; set; }

@@ -1,7 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using Azure.Core.Pipeline;
 using Microsoft.AspNetCore.Mvc;
 using SW4BADAssignment2.Models;
 using SW4BADAssignment2.Services;
+using SW4BADAssignment2.Validators;
 
 namespace SW4BADAssignment2.Controllers;
 
@@ -28,6 +30,12 @@ public class PortionController : ControllerBase
     public async Task<ActionResult<Dish>> Get(string name, int cookId, int price, int kitchenId, int quantity,
         DateTime timeStart, DateTime timeEnd)
     {
+        //Validates the price and throws an explained exception if it is invalid
+        var validationContext = new ValidationContext(price);
+        DishPriceValidatorAttribute dishPriceValidator = new();
+        dishPriceValidator.Validate(price, validationContext);
+        
+        
         var dish = new Dish()
         {
             Name = name,
@@ -36,6 +44,7 @@ public class PortionController : ControllerBase
             TimeStart = timeStart,
             TimeEnd = timeEnd
         };
+        
         await _dishService.AddAsync(dish);
         await _cookDishKitchenService.AddAsync(new CookDishKitchen()
         {
@@ -44,7 +53,6 @@ public class PortionController : ControllerBase
             KitchenId = kitchenId
         });
         return CreatedAtAction(nameof(Get), dish.DishId);
-
     }
 
     [HttpPost("UpdateQuantity")]
