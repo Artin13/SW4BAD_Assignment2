@@ -23,7 +23,6 @@ namespace SW4BADAssignment2.Models
         public decimal HourlyRate { get; set; }
 
         // Navigation properties
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
         public virtual ICollection<Trip> Trips { get; set; } = new HashSet<Trip>();
     }
 }
