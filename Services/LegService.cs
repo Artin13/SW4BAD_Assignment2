@@ -34,7 +34,7 @@ public class LegService
         var existingLeg = _context.Legs.Find(leg.LegId);
         if (existingLeg != null)
         {
-            existingLeg.Date = leg.Date;
+            existingLeg.DateTime = leg.DateTime;
             existingLeg.Time = leg.Time;
             existingLeg.Type = leg.Type;
             existingLeg.TripId = leg.TripId;

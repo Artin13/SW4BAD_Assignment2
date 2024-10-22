@@ -9,7 +9,7 @@ namespace SW4BADAssignment2.Models
         public int LegId { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(50)]
